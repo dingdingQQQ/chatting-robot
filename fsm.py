@@ -60,7 +60,7 @@ class TocMachine(GraphMachine):
     def is_going_to_wellbehave(self, event):
         text = event.message.text
         #return text.lower() == "帶她去吃甜點"
-        return text.lower() == "sweet" | text.lower() == "clarify"
+        return text.lower() == "sweet" or text.lower() == "clarify"
 
     def is_going_to_cute(self, event):
         text = event.message.text
