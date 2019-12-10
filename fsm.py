@@ -18,7 +18,6 @@ class TocMachine(GraphMachine):
     def on_enter_choose(self, event):
         print("I'm entering choose")
         ###
-        
         message = TemplateSendMessage(
             alt_text='妹妹不開心要怎麼辦？',
             template=ButtonsTemplate(
@@ -30,6 +29,7 @@ class TocMachine(GraphMachine):
                         label='message',
                         text='帶她去吃甜點'
                     ),
+                    '''
                     MessageTemplateAction(
                         label='message',
                         text='帶她去遊樂園玩'
@@ -38,9 +38,11 @@ class TocMachine(GraphMachine):
                         label='message',
                         text='帶她去買東西'
                     )
+                    '''
                 ]
             )
         )
+        reply_token = event.reply_token
         send_text_message(reply_token, message)
         
         ###
