@@ -18,6 +18,7 @@ class TocMachine(GraphMachine):
     def on_enter_choose(self, event):
         print("I'm entering choose")
         ###
+        '''
         message = TemplateSendMessage(
             alt_text='手機才看得到哦!',
             template=ButtonsTemplate(
@@ -42,13 +43,14 @@ class TocMachine(GraphMachine):
                 ]
             )
         )
-        reply_token = event.reply_token
+        '''
+        #reply_token = event.reply_token
         #send_text_message(reply_token, message)
-        line_bot_api.reply_message(event.reply_token, message)
+        #line_bot_api.reply_message(event.reply_token, message)
         
         ###
-        #reply_token = event.reply_token
-        #send_text_message(reply_token, "妹妹不開心要怎麼辦？\n1.帶她去吃甜點\n2.帶她去遊樂園玩\n3.帶她去買東西")
+        reply_token = event.reply_token
+        send_text_message(reply_token, "妹妹不開心要怎麼辦？\n1.帶她去吃甜點\n2.帶她去遊樂園玩\n3.帶她去買東西")
         #self.go_back()
     
     def on_exit_choose(self):
@@ -56,7 +58,8 @@ class TocMachine(GraphMachine):
 
     def is_going_to_wellbehave(self, event):
         text = event.message.text
-        return text.lower() == "帶她去吃甜點"
+        #return text.lower() == "帶她去吃甜點"
+        return text.lower() == "1"
 
     def on_enter_wellbehave(self, event):
         print("I'm entering wellbehave")
@@ -69,6 +72,7 @@ class TocMachine(GraphMachine):
         print("Leaving wellbehave")
 
     def is_going_to_cute(self, event):
+        text = event.message.text
         return text.lower() == "帶她去遊樂園玩"
 
     def on_enter_cute(self, event):
