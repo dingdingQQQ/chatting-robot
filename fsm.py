@@ -51,6 +51,7 @@ class TocMachine(GraphMachine):
         ###
         reply_token = event.reply_token
         send_text_message(reply_token, "妹妹不開心要怎麼辦？\n1.帶她去吃甜點(sweet)\n2.帶她去遊樂園玩(play)\n3.帶她去買東西(buy)")
+        #self.go_back()
 
     def on_exit_choose(self):
         print("Leaving choose")
@@ -58,7 +59,7 @@ class TocMachine(GraphMachine):
     def is_going_to_wellbehave(self, event):
         text = event.message.text
         #return text.lower() == "帶她去吃甜點"
-        return text.lower() == "sweet"
+        return text.lower() == "sweet" or text.lower() == "clarify"
 
     def is_going_to_cute(self, event):
         text = event.message.text
@@ -68,7 +69,7 @@ class TocMachine(GraphMachine):
         print("I'm entering wellbehave")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger wellbehave")
+        send_text_message(reply_token, "養成乖巧的妹妹>w<")
         self.go_back()
 
     def on_exit_wellbehave(self):
@@ -78,7 +79,7 @@ class TocMachine(GraphMachine):
         print("I'm entering cute")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger cute")
+        send_text_message(reply_token, "養成可愛的妹妹>w<")
         self.go_back()
     
     def on_exit_cute(self):
@@ -92,8 +93,35 @@ class TocMachine(GraphMachine):
         print("I'm entering princess")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger princess")
-        self.go_back()
+        send_text_message(reply_token, "妹妹在學校和別人打架，你會？\n1.去學校揍那個人(fight)\n2.責怪妹妹(blame)\n3.釐清事情真相(clarify)")
     
     def on_exit_princess(self):
         print("Leaving princess")
+
+    def is_going_to_bad(self, event):
+        text = event.message.text
+        return text.lower() == "blame"
+
+    def on_enter_bad(self, event):
+        print("I'm entering bad")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "養成脾氣不好的妹妹:(")
+        self.go_back()
+    
+    def on_exit_bad(self):
+        print("Leaving bad")
+
+    def is_going_to_princessfinish(self, event):
+        text = event.message.text
+        return text.lower() == "fight"
+
+    def on_enter_princessfinish(self, event):
+        print("I'm entering princessfinish")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "養成公主病妹妹:(")
+        self.go_back()
+    
+    def on_exit_princessfinish(self):
+        print("Leaving princessfinish")
