@@ -58,6 +58,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_wellbehave(self, event):
         text = event.message.text
+        reply_token = event.reply_token
         #return text.lower() == "帶她去吃甜點"
         return text.lower() == "sweet"
 
