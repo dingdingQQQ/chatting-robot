@@ -9,7 +9,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_choose(self, event):
         text = event.message.text
-        return text.lower() == 'start'
+        return text.lower() == "start"
 
     #def is_going_to_choose(self, event):
     #    text = event.message.text
@@ -18,6 +18,7 @@ class TocMachine(GraphMachine):
     def on_enter_choose(self, event):
         print("I'm entering choose")
         ###
+        '''
         message = TemplateSendMessage(
             alt_text='妹妹不開心要怎麼辦？',
             template=ButtonsTemplate(
@@ -40,10 +41,11 @@ class TocMachine(GraphMachine):
                 ]
             )
         )
-        line_bot_api.reply_message(event.reply_token, message)
+        send_text_message(reply_token, message)
+        '''
         ###
-        #reply_token = event.reply_token
-        #send_text_message(reply_token, "妹妹不開心要怎麼辦？\n1.帶她去吃甜點\n2.帶她去遊樂園玩\n3.帶她去買東西")
+        reply_token = event.reply_token
+        send_text_message(reply_token, "妹妹不開心要怎麼辦？\n1.帶她去吃甜點\n2.帶她去遊樂園玩\n3.帶她去買東西")
         self.go_back()
     
     def on_exit_choose(self):
