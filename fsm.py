@@ -21,15 +21,28 @@ class TocMachine(GraphMachine):
         message = TemplateSendMessage(
             alt_text='妹妹不開心要怎麼辦？',
             template=ButtonsTemplate(
-                #thumbnail_image_url='https://example.com/image.jpg',
+                thumbnail_image_url= NULL,
                 title='Question',
                 text='妹妹不開心要怎麼辦？',
                 actions=[
+                    PostbackTemplateAction(
+                        label='postback',
+                        text='postback text',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageTemplateAction(
+                        label='message',
+                        text='message text'
+                    ),
+                    URITemplateAction(
+                        label='uri',
+                        uri='https://yaoandy107.github.io/line-bot-tutorial/'
+                    )
+                    '''
                     MessageTemplateAction(
                         label='message',
                         text='帶她去吃甜點'
                     ),
-                    '''
                     MessageTemplateAction(
                         label='message',
                         text='帶她去遊樂園玩'
@@ -43,7 +56,8 @@ class TocMachine(GraphMachine):
             )
         )
         reply_token = event.reply_token
-        send_text_message(reply_token, message)
+        #send_text_message(reply_token, message)
+        line_bot_api.reply_message(event.reply_token, message)
         
         ###
         #reply_token = event.reply_token
@@ -54,6 +68,7 @@ class TocMachine(GraphMachine):
         print("Leaving choose")
 
     def is_going_to_wellbehave(self, event):
+        text = event.message.text
         return text.lower() == "帶她去吃甜點"
 
     def on_enter_wellbehave(self, event):
