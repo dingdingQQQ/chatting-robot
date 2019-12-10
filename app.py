@@ -17,8 +17,8 @@ machine = TocMachine(
     states=["user", "choose", "wellbehave", "cute", "princess", "bad"],
     transitions=[
         {"trigger": "advance", "source": "user", "dest": "choose", "conditions": "is_going_to_choose"},
-        {"trigger": "advance", "source": "choose", "dest": "wellbehave", "conditions": "is_going_to_wellbehave"},
-        {"trigger": "advance", "source": "choose", "dest": "cute", "conditions": "is_going_to_cute"},
+        {"trigger": "sweet", "source": "choose", "dest": "wellbehave", "conditions": "is_going_to_wellbehave"},
+        {"trigger": "play", "source": "choose", "dest": "cute", "conditions": "is_going_to_cute"},
         {"trigger": "advance", "source": "choose", "dest": "princess", "conditions": "is_going_to_princess"},
         {"trigger": "advance", "source": "princess", "dest": "bad", "conditions": "is_going_to_bad"},
         {"trigger": "advance", "source": "princess", "dest": "wellbehave", "conditions": "is_going_to_wellbehave"},
