@@ -19,26 +19,13 @@ class TocMachine(GraphMachine):
         print("I'm entering choose")
         ###
         message = TemplateSendMessage(
-            alt_text='妹妹不開心要怎麼辦？',
+            alt_text='手機才看得到哦!',
             template=ButtonsTemplate(
-                thumbnail_image_url= NULL,
+                thumbnail_image_url= 'https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s750x750/71116056_526709801498282_8687347445923093354_n.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=102&oh=bfc7418c3041d769e52f6aa357c76a16&oe=5E83F8D8&ig_cache_key=MjE1Mjg0ODYyNzkyNDIwNTc3MA%3D%3D.2',
                 title='Question',
                 text='妹妹不開心要怎麼辦？',
                 actions=[
-                    PostbackTemplateAction(
-                        label='postback',
-                        text='postback text',
-                        data='action=buy&itemid=1'
-                    ),
-                    MessageTemplateAction(
-                        label='message',
-                        text='message text'
-                    ),
-                    URITemplateAction(
-                        label='uri',
-                        uri='https://yaoandy107.github.io/line-bot-tutorial/'
-                    )
-                    '''
+                    
                     MessageTemplateAction(
                         label='message',
                         text='帶她去吃甜點'
@@ -51,7 +38,7 @@ class TocMachine(GraphMachine):
                         label='message',
                         text='帶她去買東西'
                     )
-                    '''
+                    
                 ]
             )
         )
