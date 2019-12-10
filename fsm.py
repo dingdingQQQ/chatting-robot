@@ -72,9 +72,10 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "養成乖巧的妹妹>w<")
         self.go_back()
-
+    '''
     def on_exit_wellbehave(self):
         print("Leaving wellbehave")
+        '''
 
     def on_enter_cute(self, event):
         print("I'm entering cute")
@@ -82,10 +83,10 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "養成可愛的妹妹>w<")
         self.go_back()
-    
+    '''
     def on_exit_cute(self):
         print("Leaving cute")
-
+    '''
     def is_going_to_princess(self, event):
         text = event.message.text
         return text.lower() == "buy"
@@ -95,9 +96,10 @@ class TocMachine(GraphMachine):
 
         reply_token = event.reply_token
         send_text_message(reply_token, "妹妹在學校和別人打架，你會？\n1.去學校揍那個人(fight)\n2.責怪妹妹(blame)\n3.釐清事情真相(clarify)")
-    
+    '''
     def on_exit_princess(self):
         print("Leaving princess")
+        '''
 
     def is_going_to_bad(self, event):
         text = event.message.text
@@ -109,10 +111,10 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "養成脾氣不好的妹妹:(")
         self.go_back()
-    
+    '''
     def on_exit_bad(self):
         print("Leaving bad")
-
+    '''
     def is_going_to_princessfinish(self, event):
         text = event.message.text
         return text.lower() == "fight"
@@ -123,6 +125,7 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "養成公主病妹妹:(")
         self.go_back()
-    
+    '''
     def on_exit_princessfinish(self):
         print("Leaving princessfinish")
+        '''
