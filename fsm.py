@@ -60,6 +60,10 @@ class TocMachine(GraphMachine):
         #return text.lower() == "帶她去吃甜點"
         return text.lower() == "sweet"
 
+    def is_going_to_cute(self, event):
+        text = event.message.text
+        return text.lower() == "play"
+
     def on_enter_wellbehave(self, event):
         print("I'm entering wellbehave")
 
@@ -70,10 +74,6 @@ class TocMachine(GraphMachine):
     def on_exit_wellbehave(self):
         print("Leaving wellbehave")
 
-    def is_going_to_cute(self, event):
-        text = event.message.text
-        return text.lower() == "play"
-
     def on_enter_cute(self, event):
         print("I'm entering cute")
 
@@ -83,3 +83,17 @@ class TocMachine(GraphMachine):
     
     def on_exit_cute(self):
         print("Leaving cute")
+
+    def is_going_to_princess(self, event):
+        text = event.message.text
+        return text.lower() == "buy"
+
+    def on_enter_princess(self, event):
+        print("I'm entering princess")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger princess")
+        self.go_back()
+    
+    def on_exit_princess(self):
+        print("Leaving princess")
