@@ -87,10 +87,10 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "養成可愛的妹妹>w<")
         self.go_back()
-    '''
+    
     def on_exit_cute(self):
         print("Leaving cute")
-    '''
+    
     def is_going_to_princess(self, event):
         text = event.message.text
         return text.lower() == "buy"
