@@ -50,7 +50,7 @@ class TocMachine(GraphMachine):
         
         ###
         reply_token = event.reply_token
-        send_text_message(reply_token, "妹妹不開心要怎麼辦？\n1.帶她去吃甜點\n2.帶她去遊樂園玩\n3.帶她去買東西")
+        send_text_message(reply_token, "妹妹不開心要怎麼辦？\n1.帶她去吃甜點(sweet)\n2.帶她去遊樂園玩(play)\n3.帶她去買東西(buy)")
         #self.go_back()
     
     def on_exit_choose(self):
@@ -59,7 +59,7 @@ class TocMachine(GraphMachine):
     def is_going_to_wellbehave(self, event):
         text = event.message.text
         #return text.lower() == "帶她去吃甜點"
-        return text.lower() == "1"
+        return text.lower() == "sweet"
 
     def on_enter_wellbehave(self, event):
         print("I'm entering wellbehave")
@@ -73,7 +73,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_cute(self, event):
         text = event.message.text
-        return text.lower() == "帶她去遊樂園玩"
+        return text.lower() == "play"
 
     def on_enter_cute(self, event):
         print("I'm entering cute")
